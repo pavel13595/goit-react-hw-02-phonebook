@@ -26,22 +26,17 @@ export class App extends React.Component {
     };
 
     contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? // ? alert(`${name} is already in contacts.`)
-        Notify.failure(`${name} is already in contacts.`)
-      : this.setState(
-          prevState =>
-            ({
-              contacts: [contact, ...prevState.contacts],
-            } &&
-            Notify.success(`${name}: ${number} added to contacts.`, {
-              ID: 'MKA',
-              timeout: 1923,
-              showOnlyTheLastOne: true,
-            }))
-        );
+      ? Notify.failure(`${name} is already in contacts.`)
+      : this.setState(prevState => ({
+          contacts: [contact, ...prevState.contacts],
+        }));
+    Notify.success(`${name}: ${number} added to contacts.`, {
+      ID: 'MKA',
+      timeout: 1923,
+      showOnlyTheLastOne: true,
+    });
   };
 
-  // && Notify.success(`"${name}: ${number} added to contacts.`)
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
