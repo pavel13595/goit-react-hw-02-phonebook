@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
+
 import {
   AddButton,
   TextLabel,
@@ -44,7 +45,6 @@ export class ContactForm extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           value={name}
           onChange={formChange}
-          id={nanoid()}
           required
           placeholder="Homer Simpson"
         />
@@ -59,7 +59,6 @@ export class ContactForm extends Component {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           value={number}
           onChange={formChange}
-          id={nanoid()}
           required
           placeholder="999-99-99"
         />
@@ -69,3 +68,7 @@ export class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};

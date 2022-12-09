@@ -24,17 +24,13 @@ export class App extends React.Component {
       name,
       number,
     };
+    console.log(contact);
 
     contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
       ? Notify.failure(`${name} is already in contacts.`)
       : this.setState(prevState => ({
           contacts: [contact, ...prevState.contacts],
         }));
-    Notify.success(`${name}: ${number} added to contacts.`, {
-      ID: 'MKA',
-      timeout: 1923,
-      showOnlyTheLastOne: true,
-    });
   };
 
   changeFilter = e => {
@@ -60,8 +56,6 @@ export class App extends React.Component {
   render() {
     const { filter } = this.state;
     const { addContact, changeFilter, filterContacts, deleteContact } = this;
-    console.log(this.state.contacts);
-
     return (
       <Container>
         <Title title="Phonebook" />
